@@ -12,6 +12,14 @@ const profileRouter = require('./config/routes/profile');
 const requestRouter = require('./config/routes/request');
 const userRouter = require('./config/routes/user');
 
+const cors = require('cors');
+app.use(
+  cors({
+    origin: 'http://localhost:7777',
+    credentials: true, // Allow credentials like cookies to be sent
+  })
+);
+
 //request.body is in stream format so we need to create a middleware to parse all incoming requests body to json
 app.use(express.json());
 //request.cookies is in stream format so we need cookieParser method and it's import as a middleware

@@ -6,7 +6,9 @@ const userAuth = async (req, res, next) => {
     const { token } = req.cookies;
 
     if (!token) {
-      throw new Error('Invalid Token');
+      //401 means unauthorised
+      res.status(401).send('Unauthorized: No token provided');
+      return;
     }
 
     const { id } = jwt.verify(token, 'Devtinder@123');
