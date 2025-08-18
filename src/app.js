@@ -15,7 +15,7 @@ const userRouter = require('./config/routes/user');
 const cors = require('cors');
 app.use(
   cors({
-    origin: 'http://localhost:7777',
+    origin: 'http://localhost:5173',
     credentials: true, // Allow credentials like cookies to be sent
   })
 );

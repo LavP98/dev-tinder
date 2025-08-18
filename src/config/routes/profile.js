@@ -53,8 +53,11 @@ profileRouter.patch('/profile/edit', userAuth, async (req, res) => {
       (field) => (req.user[field] = requestPayloadFields[field])
     );
     console.log('After ', requestPayloadFields);
-    await req.user.save(requestPayloadFields);
-    res.send(`${req.user?.firstName} your data is updated successfully!!!`);
+    const savedData = await req.user.save(requestPayloadFields);
+    res.json({
+      message: `${req.user?.firstName} your data is updated successfully!!!`,
+      data: savedData,
+    });
   } catch (error) {
     res.status(400).send('ERROR: ' + error);
   }
